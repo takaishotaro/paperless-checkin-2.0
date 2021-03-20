@@ -1,0 +1,58 @@
+import { gql } from '@apollo/client'
+
+export const CURRENT_USER = gql`
+  query{
+    user{
+      id
+      name
+      email
+      subEntrancePIN
+      openAt
+      closeAt
+      noticesJP
+      noticesENG
+      covidJP
+      covidENG
+      rooms{
+        id
+        floor
+        wifiID
+        wifiPASS
+        roomNum
+        isPrivate
+        roomPIN
+        safeBoxNum
+        branch{
+          id
+          subEntrancePIN
+          openAt
+          closeAt
+          noticesJP
+          noticesENG
+        }
+      }
+    }
+  }
+`
+export const ROOM = gql`
+  query($roomId:ID){
+    room(id:$roomId){
+      id
+      floor
+      wifiID
+      wifiPASS
+      roomNum
+      isPrivate
+      roomPIN
+      safeBoxNum
+      branch{
+        id
+        subEntrancePIN
+        openAt
+        closeAt
+        noticesJP
+        noticesENG
+      }
+    }
+  }
+`
