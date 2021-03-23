@@ -57,7 +57,7 @@ const welcome = () => {
         <Row>
           <Col md={6} lg={6} sm={6} >
             <FormGroup>
-              <Label>{lang==="JP" ? "ご氏名":"name"}</Label>
+              <Label>{lang==="JP" ? "ご氏名(必須)":"name(required)"}</Label>
               <Input
                 type="text" value={name}
                 onChange={(e)=>setName(e.target.value)}

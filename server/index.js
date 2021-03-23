@@ -61,19 +61,6 @@ app.prepare().then(() => {
   server.use(bodyParser.urlencoded({ extended: true }))
   server.use(bodyParser.json())
 
-//   const upload = multer({
-//     dest:"image",
-//     limits: {
-//         fileSize: 1000000
-//     },
-//     fileFilter(req,file,cb){
-//         if(!file.originalname.match(/\.(jpg|jpeg|png)$/)){
-//             return cb(new Error('Please upload an Image file'))
-//         }
-//         cb(undefined, true)
-//     }
-// })
-
   router.post('/signImage/createFile',   async (req , res) => {
     try{
       const base64Data = req.body.sign.replace(/^data:image\/png;base64,/, "");
