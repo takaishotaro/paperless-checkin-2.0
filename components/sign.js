@@ -17,6 +17,8 @@ const sign =(props)=>{
   const save = () => {
     data=sigPad.current.toDataURL('image/png')
     setLoading(true)
+    props.getImage()
+    console.log(props.image)
 
 //api--------------------------------------------
     const myHeaders = new Headers();

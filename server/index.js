@@ -58,8 +58,8 @@ app.prepare().then(() => {
   }))
   // =================================================
   const router = new express.Router()
-  server.use(bodyParser.urlencoded({ extended: true }))
-  server.use(bodyParser.json())
+  server.use(bodyParser.urlencoded({ extended: true, limit:'10mb' }))
+  server.use(bodyParser.json({extended: true, limit:'10mb'}))
 
   router.post('/signImage/createFile',   async (req , res) => {
     try{
