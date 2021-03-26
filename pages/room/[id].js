@@ -45,7 +45,7 @@ const roomInfo = () => {
               <th>{room.isPrivate ? "Room No.":"Room & Bed No."}</th>
               <td className="pl-3 text-right">{room && room.roomNum}</td>
             </tr>
-            { (room && !room.isPrivate) && (
+            { !room.isPrivate && (
               <tr className="mt-2">
                 <th>Safe Box No.</th>
                 <td className="pl-3 text-right">{room && room.safeBoxNum}</td>
@@ -57,10 +57,12 @@ const roomInfo = () => {
         <h4>PIN</h4>
         <Table>
           <tbody>
-            <tr className="mt-2">
-              <th>Room PIN</th>
-              <td className="pl-3 text-right">{room && room.roomPIN}</td>
-            </tr>
+            {!room.isPrivate && (
+              <tr className="mt-2">
+                <th>Room PIN</th>
+                <td className="pl-3 text-right">{room && room.roomPIN}</td>
+              </tr>
+            )}
             <tr className="mt-2">
               <th>Sub Entrance PIN</th>
               <td className="pl-3 text-right">{room && room.branch.subEntrancePIN}</td>
@@ -98,8 +100,8 @@ const roomInfo = () => {
 
         <h4>Notices</h4>
         <ListGroup>
-          { (room && lang==="JP") && room.branch.noticesJP.map((notice)=><ListGroupItem key={notice}>{notice}</ListGroupItem>)}
-          { (room && lang==="ENG") && room.branch.noticesENG.map((notice)=><ListGroupItem key={notice}>{notice}</ListGroupItem>)}
+          { lang==="JP" && room.branch.noticesJP.map((notice)=><ListGroupItem key={notice}>{notice}</ListGroupItem>)}
+          { lang==="ENG" && room.branch.noticesENG.map((notice)=><ListGroupItem key={notice}>{notice}</ListGroupItem>)}
         </ListGroup>
       </Container>
     </div>

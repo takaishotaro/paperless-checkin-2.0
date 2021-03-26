@@ -8,12 +8,9 @@ import { Navbar, NavbarBrand, Dropdown, DropdownToggle,
   DropdownMenu, DropdownItem, Container, Col,
   FormGroup, Label, Input, Row, Button, Spinner
 } from 'reactstrap';
-import Sign from '../components/sign'
 
 import SignatureCanvas from 'react-signature-canvas'
 import { useScreenshot } from "use-react-screenshot";
-import { rejects } from "assert";
-
 
 const welcome = () => {
   const { loading: querying, data } = useQuery(CURRENT_USER)
@@ -82,7 +79,7 @@ const welcome = () => {
   return(
     <div>
       <Navbar color="light" light className="mb-3">
-        <NavbarBrand className="mr-auto">And Hostel</NavbarBrand>
+        <NavbarBrand  href="/dashbord" className="mr-auto">{user.name}</NavbarBrand>
         <Dropdown isOpen={dropdownOpen} toggle={toggle}>
           <DropdownToggle caret>
             言語 / Language

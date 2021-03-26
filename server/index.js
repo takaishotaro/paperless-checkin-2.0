@@ -2,14 +2,11 @@ const express = require('express')
 const next = require('next')
 const session = require('express-session');
 const passport = require('passport');
-const LocalStrategy = require('passport-local').Strategy;
 const MongoDBStore = require('connect-mongodb-session')(session);
 const mongoose = require('mongoose')
 const {graphqlHTTP} = require('express-graphql');
-const multer = require('multer')
-const sharp = require('sharp')
 const bodyParser = require('body-parser');
-const { sendWelcomeEmail, sendSignImage } = require("./services/email")
+const { sendSignImage } = require("./services/email")
 const fs = require('fs')
 
 const port = parseInt(process.env.PORT, 10) || 3000

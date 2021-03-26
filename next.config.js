@@ -4,6 +4,6 @@ const dev = process.env.NODE_ENV !== 'production';
 
 module.exports = {
   env: {
-    BASE_URL: dev ? 'http://localhost:3000' : 'https://paperless-checkin.herokuapp.com',
+    BASE_URL: dev ? 'http://localhost:3000' : 'https://paperless-checkin-ah.herokuapp.com',
   }
 }
