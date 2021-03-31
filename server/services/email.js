@@ -12,13 +12,13 @@ const sendWelcomeEmail = () => {
     })
 }
 
-const sendSignImage = (name,email) => {
+const sendSignImage = (date,email) => {
   const attachment = fs.readFileSync("image.png").toString("base64");
   sgMail.send({
     to: email,
     from: email,
-    subject: `【コロナ同意書】ゲスト名：${name}`,
-    text:"sign",
+    subject: `【コロナ同意書】日付：${date}`,
+    text:"署名が完了しました。",
     attachments: [
       {
         content: attachment,

@@ -16,11 +16,11 @@ const welcome = () => {
   const { loading: querying, data } = useQuery(CURRENT_USER)
   const user = data && data.user || null
   const today = new Date();
+  const stringToday = today.toLocaleString({ timeZone: 'Asia/Tokyo' }).split(' ')[0]
 
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [lang, setLang] = useState("JP")
   const [checked, setChecked] = useState(false)
-  const [name, setName] = useState('')
 
   const toggle = () => setDropdownOpen(!dropdownOpen);
   const checkBoxChange = () => setChecked(!checked)
@@ -45,7 +45,7 @@ const welcome = () => {
     //api--------------------------------------------
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
-    const raw = JSON.stringify({sign:generatedImage, email: user.email, name});
+    const raw = JSON.stringify({ sign: generatedImage, email: user.email, date: stringToday });
 
     const requestOptions = {
       method: 'POST',
@@ -69,7 +69,7 @@ const welcome = () => {
   //-----------------------------------------------
   }
   const isValidOperation = () => {
-    if(name === "" || checked===false || !started){
+    if( checked===false || !started){
       return false
     } else { return true }
   }
@@ -103,7 +103,7 @@ const welcome = () => {
           <p>{lang==="JP" ? "皆様が快適にご滞在できますようご協力をお願い致します。":"We ask for your cooperation so that everyone is able to enjoy a comfortable stay."}</p>
           <p className="mt-3">{lang==="JP" ? "このフォームに記入頂いた個人情報については、不正アクセスや漏洩が発生しないよう厳重に管理いたします。なお、万が一施設内で感染者が発生した場合には、このフォームに記入した個人情報を所定機関（保健所等）に提出することとします。":"Personal information entered in this form will be strictly managed to prevent unauthorized access and leakage. In the unlikely event that an infected person occurs in the facility, the personal information entered in this form will be submitted to the public health center."}</p>
 
-          <p className="mt-2">{today.toLocaleString({ timeZone: 'Asia/Tokyo' }).split(' ')[0]}</p>
+          <p className="mt-2">{stringToday}</p>
           <FormGroup check className="mb-2">
             <Label check>
               <Input type="checkbox" checked={checked} onChange={checkBoxChange}/>{' '}
@@ -111,17 +111,6 @@ const welcome = () => {
             </Label>
           </FormGroup>
 
-          <Row>
-            <Col md={6} lg={6} sm={6} >
-              <FormGroup>
-                <Label>{lang==="JP" ? "ご氏名(必須)":"name(required)"}</Label>
-                <Input
-                  type="text" value={name}
-                  onChange={(e)=>setName(e.target.value)}
-                />
-              </FormGroup>
-            </Col>
-          </Row>
           <p className="mt-2">{lang==="JP" ? "灰色の欄に署名をお願いします。":"Please sign here."}</p>
 
         <SignatureCanvas backgroundColor="#ededed" ref={sigPad}

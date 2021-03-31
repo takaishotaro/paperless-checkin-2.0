@@ -64,7 +64,7 @@ app.prepare().then(() => {
 
       fs.writeFile("image.png",base64Data,'base64',async function(err){
           console.log(err);
-          await sendSignImage(req.body.name, req.body.email)
+          await sendSignImage(req.body.date, req.body.email)
           fs.unlinkSync("image.png")
       })
 

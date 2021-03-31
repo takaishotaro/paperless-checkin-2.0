@@ -1,6 +1,7 @@
 # Paperless-Checkinとは？
 
-[Paperless-Checkin](https://paperless-checkin.herokuapp.com/)とは、宿泊施設がゲストに伝えるべき情報をWebを利用して伝えるためのWebアプリケーションです。
+Paperless-Checkinとは、宿泊施設がゲストに伝えるべき情報をWebを利用して伝えるためのWebアプリケーションです。
+[https://paperless-checkin-ah.herokuapp.com/](https://paperless-checkin-ah.herokuapp.com/)
 
 # 使用技術
 
@@ -14,3 +15,8 @@
 - react 16.13.1
 - next.js 10.0.8
 - @apollo/client 3.3.11
+
+# 機能一覧
+- ユーザー登録、ログイン機能(passport)
+- 画像アップロード(fs)
+- メール送信(sendgrid)
