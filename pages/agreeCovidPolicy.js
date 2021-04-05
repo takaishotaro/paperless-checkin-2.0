@@ -12,7 +12,7 @@ import { Navbar, NavbarBrand, Dropdown, DropdownToggle,
 import SignatureCanvas from 'react-signature-canvas'
 import { useScreenshot } from "use-react-screenshot";
 
-const welcome = () => {
+const agreeCovidPolicy = () => {
   const { loading: querying, data } = useQuery(CURRENT_USER)
   const user = data && data.user || null
   const today = new Date();
@@ -69,7 +69,7 @@ const welcome = () => {
   //-----------------------------------------------
   }
   const isValidOperation = () => {
-    if( checked===false || !started){
+    if( checked===false || !started || loading ){
       return false
     } else { return true }
   }
@@ -136,4 +136,4 @@ const welcome = () => {
   )
 }
 
-export default withApollo(withAuth(welcome))
+export default withApollo(withAuth(agreeCovidPolicy))
