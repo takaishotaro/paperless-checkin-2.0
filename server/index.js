@@ -6,8 +6,6 @@ const MongoDBStore = require('connect-mongodb-session')(session);
 const mongoose = require('mongoose')
 const {graphqlHTTP} = require('express-graphql');
 const bodyParser = require('body-parser');
-const { sendSignImage } = require("./services/email")
-const fs = require('fs')
 
 const port = parseInt(process.env.PORT, 10) || 3000
 const dev = process.env.NODE_ENV !== 'production'
@@ -54,26 +52,10 @@ app.prepare().then(() => {
     graphiql: true
   }))
   // =================================================
-  const router = new express.Router()
   server.use(bodyParser.urlencoded({ extended: true, limit:'10mb' }))
   server.use(bodyParser.json({extended: true, limit:'10mb'}))
 
-  router.post('/signImage/createFile',   async (req , res) => {
-    try{
-      const base64Data = req.body.sign.replace(/^data:image\/png;base64,/, "");
-
-      fs.writeFile("image.png",base64Data,'base64',async function(err){
-          console.log(err);
-          await sendSignImage(req.body.date, req.body.email)
-          fs.unlinkSync("image.png")
-      })
-
-      res.send("書き込み完了");
-    }catch (e) {
-      res.status(404).send()
-    }
-
-  })
+  const router = require('./routes/file')
 
   server.use(router)
 // =================================================

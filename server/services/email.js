@@ -29,7 +29,26 @@ const sendSignImage = (date,email) => {
     ]
   })
 }
+
+const sendExampleSignImage = (date,email) => {
+  const attachment = fs.readFileSync("image.png").toString("base64");
+  sgMail.send({
+    from: "takaishotaro326@gmail.com",
+    to: email,
+    subject: `【コロナ同意書】日付：${date}`,
+    text:"署名が完了しました。",
+    attachments: [
+      {
+        content: attachment,
+        filename: "attachment.png",
+        type: "application/png",
+        disposition: "attachment"
+      }
+    ]
+  })
+}
 module.exports = {
     sendWelcomeEmail,
-    sendSignImage
+    sendSignImage,
+    sendExampleSignImage
 }
