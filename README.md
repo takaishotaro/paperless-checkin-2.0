@@ -3,7 +3,7 @@
 Paperless-Checkinとは、宿泊施設がゲストに伝えるべき情報をWebを利用して伝えるためのWebアプリケーションです。
 [https://paperless-checkin-ah.herokuapp.com/](https://paperless-checkin-ah.herokuapp.com/)
 
-【テストアカウント】
+【テストアカウント】  
 email: "test@test.com"  
 pass: "test"  
 
